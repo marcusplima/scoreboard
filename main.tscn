@@ -1,0 +1,111 @@
+[gd_scene load_steps=9 format=3 uid="uid://m1p4mrf4jaoq"]
+
+[ext_resource type="StyleBox" uid="uid://cr3jb5a5cecfj" path="res://blue.tres" id="1_u5oeg"]
+[ext_resource type="Script" path="res://main.gd" id="1_x8od5"]
+[ext_resource type="StyleBox" uid="uid://b2tgrs3x848gc" path="res://red.tres" id="2_gogjm"]
+[ext_resource type="StyleBox" uid="uid://ckc6b7bkttqtu" path="res://white.tres" id="4_o7cvf"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t3t3l"]
+albedo_color = Color(0, 0, 1, 1)
+
+[sub_resource type="Shader" id="Shader_kpa1p"]
+code = "shader_type spatial;
+
+void vertex() {
+	// Called for every vertex the material is visible on.
+}
+
+void fragment() {
+	// Called for every pixel the material is visible on.
+}
+
+//void light() {
+	// Called for every pixel for every light affecting the material.
+	// Uncomment to replace the default light processing function with this one.
+//}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uwv3g"]
+render_priority = 0
+next_pass = SubResource("StandardMaterial3D_t3t3l")
+shader = SubResource("Shader_kpa1p")
+
+[sub_resource type="Theme" id="Theme_mjxcq"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_x8od5")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="."]
+offset_right = 1150.0
+offset_bottom = 645.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label1" type="Label" parent="HBoxContainer2"]
+material = SubResource("ShaderMaterial_uwv3g")
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme = SubResource("Theme_mjxcq")
+theme_override_font_sizes/font_size = 180
+theme_override_styles/normal = ExtResource("2_gogjm")
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 180
+theme_override_styles/normal = ExtResource("1_u5oeg")
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1150.0
+offset_bottom = 645.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureButton1plus" type="TextureButton" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="TextureButton1minus" type="TextureButton" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ButtonInverter" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_styles/normal = ExtResource("4_o7cvf")
+theme_override_styles/hover = ExtResource("4_o7cvf")
+text = "Inverter"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureButton2plus" type="TextureButton" parent="HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="TextureButton2minus" type="TextureButton" parent="HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/TextureButton1plus" to="." method="_on_texture_button_1_plus_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/TextureButton1minus" to="." method="_on_texture_button_1_minus_pressed"]
+[connection signal="pressed" from="HBoxContainer/ButtonInverter" to="." method="_on_button_inverter_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer2/TextureButton2plus" to="." method="_on_texture_button_2_plus_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer2/TextureButton2minus" to="." method="_on_texture_button_2_minus_pressed"]

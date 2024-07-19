@@ -1,0 +1,9 @@
+ea4bc82a6ad023ab7ee23ee620429895
+::res://::1721229754
+Button1minus.gd::GDScript::-1::1721147445::0::1::::<>Button<>::
+Button1plus.gd::GDScript::-1::1721147406::0::1::::<>Button<>::
+Button2minus.gd::GDScript::-1::1721147458::0::1::::<>Button<>::
+Button2plus.gd::GDScript::-1::1721147430::0::1::::<>Button<>::
+icon.svg::CompressedTexture2D::2278241039668634971::1721146819::1721229755::1::::<><>::
+main.tscn::PackedScene::896903144984843620::1721147509::0::1::::<><>::res://Button1plus.gd<>res://Button1minus.gd<>res://Button2plus.gd<>res://Button2minus.gd
+README.md::TextFile::-1::1721211275::0::1::::<><>::
